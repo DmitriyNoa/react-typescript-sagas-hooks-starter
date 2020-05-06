@@ -1,4 +1,4 @@
-export interface Currency {
+export interface ICurrency {
     code: string;
     displayName: string;
 }

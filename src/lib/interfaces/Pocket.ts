@@ -1,8 +1,8 @@
-import { Currency } from "./Currency";
+import { ICurrency } from "./Currency";
 
-export interface Pocket {
-    currency: Currency;
+export interface IPocket {
+    currency: ICurrency;
     id: number;
     displayName?: string;
-    value: number;
+    balance: number;
 }
