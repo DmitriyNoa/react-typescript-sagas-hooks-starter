@@ -4,7 +4,8 @@ export const CONSTANTS = {
     },
     ACTIONS: {
         POCKETS: {
-            ADD: "ADD"
+            ADD: "ADD",
+            SET_POCKETS: "SET_POCKETS",
         },
         CURRENCIES: {
             GET_CURRENCIES_SUCCESS: "GET_CURRENCIES_SUCCESS",

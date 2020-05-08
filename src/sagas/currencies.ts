@@ -1,14 +1,25 @@
 import { get } from "../lib/utils/http-client";
-import { ICurrency } from "../lib/interfaces/Currency";
+import { CurrencyResponse, ICurrency } from "../lib/interfaces/Currency";
 import { CONSTANTS } from "../constants";
-import { put, call } from 'redux-saga/effects';
-import {GET_CURRENCIES_SUCCESS, getCurrenciesAsync} from "../actions/currencies";
+import { put } from 'redux-saga/effects';
+import { getCurrenciesAsync } from "../actions/currencies";
 
-function* getCurrenciesList(): Generator<any, void, ICurrency[]> {
+function* getCurrenciesList(): Generator<any, ICurrency[] | undefined, CurrencyResponse> {
     try {
-        const currencies = yield call(get, CONSTANTS.URLS.CURRENCIES);
+        const currencies = yield get<CurrencyResponse>(CONSTANTS.URLS.CURRENCIES);
 
-        yield put(getCurrenciesAsync.success(currencies));
+        const currenciesArray: ICurrency[] = [];
+
+        for(let currencyCode in currencies) {
+            const currency: ICurrency = {
+                code: currencyCode,
+                displayName: currencies[currencyCode]
+            }
+            currenciesArray.push(currency);
+        }
+
+        yield put(getCurrenciesAsync.success(currenciesArray));
+        return currenciesArray;
     } catch (err) {
         console.error(err);
     }
