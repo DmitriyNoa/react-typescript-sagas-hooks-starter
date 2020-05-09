@@ -14,14 +14,15 @@ function* generateDefaultPockets(currencies: ICurrency[]) {
     const defaultPocketCurrencyCodes = ["USD", "EUR", "GBP"];
     const defaultPockets: IPocket[] = [];
 
-    defaultPocketCurrencyCodes.forEach((code) => {
+    defaultPocketCurrencyCodes.forEach((code, index) => {
         const pocketCurrency = currencies.find((currency) => {
             return currency.code === code;
         });
         if(!pocketCurrency) {
             throw new Error("Currency code error");
         }
-        const pocket: IPocket = addPocket(100, pocketCurrency);
+        // create a wallet and put some money
+        const pocket: IPocket = addPocket(100 * (index + 1), pocketCurrency);
         defaultPockets.push(pocket);
     });
 

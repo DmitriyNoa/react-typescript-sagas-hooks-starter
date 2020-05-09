@@ -7,7 +7,7 @@ interface IPocketProps {
     pocket: IPocket
 }
 
-export const Pocket = ({pocket}: IPocketProps) => {
+export const Pocket: React.FC<IPocketProps> = ({pocket}) => {
     return (
         <div className={cx(pocketStyles.root)}>
             <div className={cx(pocketStyles.pocketName)}>{pocket.displayName || pocket.currency.displayName}</div>

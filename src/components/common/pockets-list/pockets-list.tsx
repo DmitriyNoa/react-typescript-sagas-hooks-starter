@@ -8,7 +8,7 @@ interface IPocketsListProps {
     pockets: IPocket[]
 }
 
-export const PocketsList = ({ pockets }: IPocketsListProps) => {
+export const PocketsList: React.FC<IPocketsListProps> = ({ pockets }) => {
     const pocketsList = pockets.map((pocket: IPocket) => {
         return <li key={pocket.id}><Pocket pocket={pocket} /></li>
     });
