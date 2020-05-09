@@ -1,8 +1,8 @@
 import { ICurrency } from "../lib/interfaces/Currency";
 import { IPocket } from "../lib/interfaces/Pocket";
-import { v4 as uuidv4 } from 'uuid';
 import { put } from "redux-saga/effects";
 import { ADD_POCKET } from "../actions/pockets";
+import { addPocket } from "../lib/utils/helpers";
 
 /**
  @function generateDefaultPockets a mock function to generate user pockets. In production this will
@@ -26,15 +26,6 @@ function* generateDefaultPockets(currencies: ICurrency[]) {
     });
 
     yield put(ADD_POCKET(defaultPockets));
-}
-
-function addPocket(balance: number = 0, currency: ICurrency, displayName?: string): IPocket {
-    return {
-        id: uuidv4(),
-        balance,
-        currency,
-        displayName
-    }
 }
 
 export {

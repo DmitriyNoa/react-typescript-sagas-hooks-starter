@@ -1,6 +1,8 @@
 import React from "react";
 import { IPocket } from "../../../lib/interfaces/Pocket";
-import { Pocket } from "../pocket/Pocket";
+import { Pocket } from "../pocket/pocket";
+import { cx } from "emotion";
+import { pocketsListStyles } from "./pockets-list.css";
 
 interface IPocketsListProps {
     pockets: IPocket[]
@@ -11,7 +13,7 @@ export const PocketsList = ({ pockets }: IPocketsListProps) => {
         return <li key={pocket.id}><Pocket pocket={pocket} /></li>
     });
     return  (
-        <ul>
+        <ul className={cx(pocketsListStyles.root)}>
             {pocketsList}
         </ul>
     )
