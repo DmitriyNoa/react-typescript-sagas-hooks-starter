@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { PocketsList } from "../../common/pockets-list/pockets-list";
 import { pocketsSelector } from "../../../selectors/pockets";
 import { cx } from "emotion";
@@ -7,6 +7,8 @@ import { exchangeStyles } from "./exchange.css";
 import { Input } from "../../common/input/input";
 import { IPocket } from "../../../lib/interfaces/Pocket";
 import { IOption, Select } from "../../common/select/select";
+import {END_POLL_WATCHER, START_POLL_WATCHER} from "../../../actions/currencies";
+import {exchangeSelector} from "../../../selectors/exchange";
 
 type PocketsExchange = {
     fromPocket?: IPocket;
@@ -15,12 +17,14 @@ type PocketsExchange = {
 
 export const Exchange: React.FC = () => {
     const pockets = useSelector(pocketsSelector);
+    const exchangeRate = useSelector(exchangeSelector);
 
     // let's set some default pockets to exchange
     const [exchange, setExchange] = useState<PocketsExchange>({fromPocket: pockets[0], toPocket: pockets[1]});
     const [options, setOptions] = useState<IOption[]>([]);
     const [changeValue, setChangeValue] = useState<string>();
     const [changeResultValue, setChangeResultValue] = useState<string>();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         // predefine default selected wallets for a better UX
@@ -59,7 +63,10 @@ export const Exchange: React.FC = () => {
                         <Input disabled={true} onChange={(val) => { console.log(val); }} value={changeResultValue} />
                     </div>
                     <div>
-                        <button onClick={() => {}}>Let's do it</button>
+                        <button onClick={(e) => {e.preventDefault(); dispatch(START_POLL_WATCHER("EUR")) }}>Let's do it</button>
+                    </div>
+                    <div>
+                        <button onClick={(e) => {e.preventDefault(); dispatch(END_POLL_WATCHER()) }}>STOP IT!!</button>
                     </div>
                 </div>
             </div>

@@ -21,13 +21,13 @@ export const selectStyles: ISelectCss = {
             boxShadow:  "1px 1px 2px #ffffff",
         }),
         "&::after": css({
+            content: "",
+            display: "inline-block",
             width: 0,
-            content: '" "',
-            display: "block",
             height: 0,
             borderStyle: "solid",
-            borderWidth: "10px 5px 0 5px",
-            borderColor: "#444d57 transparent transparent transparent",
+            borderWidth: "15px 7.5px 0 7.5px",
+            borderCcolor: "#6f6f6f transparent transparent transparent",
         }),
         cursor: "pointer"
     }),
