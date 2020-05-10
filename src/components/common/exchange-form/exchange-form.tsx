@@ -8,7 +8,7 @@ import {IPocket} from "../../../lib/interfaces/Pocket";
 interface IExchangeFormProps {
     pocket: IPocket;
     selectOptions: IOption[];
-    selectedDisabled: boolean;
+    selectedDisabled: string;
     onSelect: (val: string) => {};
     input: IInputProps;
 }
