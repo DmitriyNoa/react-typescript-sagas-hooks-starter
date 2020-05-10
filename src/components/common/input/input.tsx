@@ -3,7 +3,7 @@ import { IMaskInput } from "react-imask";
 import { cx } from "emotion";
 import { inputStyles } from "./input.css";
 
-interface IInputProps {
+export interface IInputProps {
     onChange: (value: string) => void;
     max?: number;
     value?: string;

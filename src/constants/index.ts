@@ -17,6 +17,11 @@ export const CONSTANTS = {
             START_POLL_WATCHER: "START_POLL_WATCHER",
             END_POLL_WATCHER: "END_POLL_WATCHER",
         },
+        EXCHANGE: {
+            EXCHANGE_SUCCESS: "EXCHANGE_SUCCESS",
+            EXCHANGE_REQUEST: "EXCHANGE_REQUEST",
+            EXCHANGE_FAILURE: "EXCHANGE_FAILURE",
+        }
     },
     URLS: {
         CURRENCIES: "currencies.json",

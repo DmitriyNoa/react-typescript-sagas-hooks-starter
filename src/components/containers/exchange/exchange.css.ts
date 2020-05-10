@@ -4,7 +4,7 @@ interface ExchangeCss {
     h2?: string;
     userPockets?: string;
     currenciesExchange?: string;
-    addPocket?: string;
+    exchangeForm?: string;
 }
 
 export const exchangeStyles: ExchangeCss = {
@@ -22,6 +22,7 @@ export const exchangeStyles: ExchangeCss = {
     currenciesExchange: css({
         padding: "0 2rem",
     }),
-    addPocket: css({
+    exchangeForm: css({
+        marginBottom: "2rem"
     }),
 };

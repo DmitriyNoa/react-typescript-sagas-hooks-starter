@@ -13,7 +13,7 @@ export const initialExchangeState: ExchangeRate = {
 export const exchangeReducer = (state: ExchangeRate = initialExchangeState, action: any) => {
     switch (action.type) {
         case getType(getExchangeRateAsync.success): {
-            return action.payload;
+            return action.payload
         }
         default:
             return state;

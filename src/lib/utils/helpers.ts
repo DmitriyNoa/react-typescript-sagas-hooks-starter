@@ -11,6 +11,18 @@ function addPocket(balance: number = 0, currency: ICurrency, displayName?: strin
     }
 }
 
+/**
+ * @function displayBalance
+ * @param [string] value A number string to display
+ * @param [number] digitsNumber A number of digits to show after zero.
+ * @return string
+ */
+function displayBalance(value: number, digitsNumber: number = 2): string {
+    if(!value) return "";
+    return value.toFixed(digitsNumber);
+}
+
 export {
     addPocket,
+    displayBalance,
 }

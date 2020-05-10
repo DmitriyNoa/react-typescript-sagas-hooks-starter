@@ -21,7 +21,7 @@ export const selectStyles: ISelectCss = {
             boxShadow:  "1px 1px 2px #ffffff",
         }),
         "&::after": css({
-            content: "",
+            content: '" "',
             display: "inline-block",
             width: 0,
             height: 0,
