@@ -9,7 +9,7 @@ import {IPocket} from "../../../lib/interfaces/Pocket";
 import {IOption, Select} from "../../common/select/select";
 import {END_POLL_WATCHER, START_POLL_WATCHER} from "../../../actions/currencies";
 import {exchangeSelector} from "../../../selectors/exchange";
-import {exchangeAsync} from "../../../actions/exchange";
+import {TransactionAction} from "../../../actions/exchange";
 import {Transaction} from "../../../lib/interfaces/Transaction";
 import {displayBalance} from "../../../lib/utils/helpers";
 import {Button} from "../../common/button/button";
@@ -20,12 +20,17 @@ type PocketsExchange = {
 }
 
 export const Exchange: React.FC = () => {
+    // get user pockets from the store.
     const pockets = useSelector(pocketsSelector);
+    // get the exchange exchange currency rates.
     const exchangeCurrency = useSelector(exchangeSelector);
 
     // let's set some default pockets to exchange
     const [exchange, setExchange] = useState<PocketsExchange>({fromPocket: pockets[0], toPocket: pockets[1]});
+    // set options lists for select component options
     const [options, setOptions] = useState<IOption[]>([]);
+
+    // set a holder for user input value
     const [changeValue, setChangeValue] = useState<string>();
     const [changeResultValue, setChangeResultValue] = useState<string>();
 
@@ -63,7 +68,7 @@ export const Exchange: React.FC = () => {
                 toWallet: exchange.toPocket.id,
                 value,
                 rate
-            })
+            });
         }
     }, [changeValue, exchangeCurrency, exchange]);
 
@@ -85,37 +90,57 @@ export const Exchange: React.FC = () => {
             <div className={cx(exchangeStyles.currenciesExchange)}>
                 <h2>Exchange
                     <span>
-                        {exchange.fromPocket && exchange.toPocket && `1 ${exchange.fromPocket?.currency.code} = ${displayBalance(exchangeCurrency.rates[exchange.toPocket?.currency.code])} ${exchange.toPocket?.currency.code}`}
+                        {exchange.fromPocket &&
+                         exchange.toPocket &&
+                        `1 ${exchange.fromPocket?.currency.code} = ${displayBalance(exchangeCurrency.rates[exchange.toPocket?.currency.code])} ${exchange.toPocket?.currency.code}`}
                     </span>
                 </h2>
                 <div>
                     <div className={cx(exchangeStyles.exchangeForm)}>
-                        <Select disabled={exchange.toPocket?.id} label={"From:"} options={options} name={'fromPocket'}
-                                id={"fromPocket"} selected={exchange.fromPocket?.id} onChange={(val: string) => {
-                            setExchange({
-                                fromPocket: pockets.find(pocket => pocket.id === val) || null,
-                                toPocket: exchange.toPocket
-                            })
-                        }}/>
+                        <Select disabled={exchange.toPocket?.id}
+                                label={"From:"}
+                                options={options}
+                                name={'fromPocket'}
+                                id={"fromPocket"}
+                                selected={exchange.fromPocket?.id}
+                                onChange={(val: string) => {
+                                    setExchange({
+                                        fromPocket: pockets.find(pocket => pocket.id === val) || null,
+                                        toPocket: exchange.toPocket
+                                    })
+                                }}
+                        />
                         <Input onChange={(val) => {
-                            setChangeValue(val);
-                        }} value={changeValue} max={exchange.fromPocket?.balance}/>
+                                setChangeValue(val);
+                            }}
+                               value={changeValue}
+                               max={exchange.fromPocket?.balance}/>
                     </div>
-                    <div  className={cx(exchangeStyles.exchangeForm)}>
-                        <Select disabled={exchange.fromPocket?.id} label={"To:"} options={options} name={'toPocket'}
-                                id={"toPocket"} selected={exchange.toPocket?.id} onChange={(val: string) => {
-                            setExchange({
-                                fromPocket: exchange.fromPocket,
-                                toPocket: pockets.find(pocket => pocket.id === val) || null
-                            })
+                    <div className={cx(exchangeStyles.exchangeForm)}>
+                        <Select disabled={exchange.fromPocket?.id}
+                                label={"To:"}
+                                options={options}
+                                name={'toPocket'}
+                                id={"toPocket"}
+                                selected={exchange.toPocket?.id}
+                                onChange={(val: string) => {
+                                    setExchange({
+                                        fromPocket: exchange.fromPocket,
+                                        toPocket: pockets.find(pocket => pocket.id === val) || null
+                                    })
                         }}/>
-                        <Input disabled={true} onChange={(val) => {}} value={changeResultValue}/>
+                        <Input disabled={true}
+                               onChange={(val) => {
+
+                               }}
+                               value={changeResultValue}/>
                     </div>
                     <div>
-                        <Button text={"exchange"} onClick={(e) => {
-                            e.preventDefault();
-                            dispatch(exchangeAsync.request(transaction))
-                        }} />
+                        <Button text={"exchange"}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    dispatch(TransactionAction(undefined, transaction))
+                                 }}/>
                     </div>
                 </div>
             </div>

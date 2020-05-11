@@ -26,7 +26,7 @@ function* generateDefaultPockets(currencies: ICurrency[]) {
         defaultPockets.push(pocket);
     });
 
-    yield put(ADD_POCKET(defaultPockets));
+    yield put(ADD_POCKET(defaultPockets, null));
 }
 
 export {

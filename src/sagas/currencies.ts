@@ -4,7 +4,7 @@ import { CONSTANTS } from "../constants";
 import { put, call, take, race, delay } from 'redux-saga/effects';
 import {END_POLL_WATCHER, getCurrenciesAsync, START_POLL_WATCHER} from "../actions/currencies";
 import { config } from "../config";
-import {getExchangeRateAsync} from "../actions/exchange";
+import { GetExchangeRate } from "../actions/exchange";
 
 function* getCurrenciesList(): Generator<any, ICurrency[] | undefined, CurrencyResponse> {
     try {
@@ -33,10 +33,10 @@ function* currencyRatePolling(payload: string):  Generator<any, string | number,
     while (true) {
         try {
             const exchange = yield get<ExchangeRate>(`${CONSTANTS.URLS.EXCHANGE}?base=${baseCurrency}&app_id=${config.API_KEY}`);
-            yield put(getExchangeRateAsync.success(exchange));
+            yield put(GetExchangeRate(exchange));
             yield delay(pollingDelay);
         } catch (err) {
-            yield put(getExchangeRateAsync.success(err.message));
+            console.error(err);
             yield call(END_POLL_WATCHER);
         }
     }

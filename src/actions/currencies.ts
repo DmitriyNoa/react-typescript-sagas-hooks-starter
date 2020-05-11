@@ -1,5 +1,5 @@
-import {createAction, ActionType, createAsyncAction } from "typesafe-actions";
-import {ICurrency} from "../lib/interfaces/Currency";
+import { createAction, ActionType, createAsyncAction } from "typesafe-actions";
+import { ICurrency } from "../lib/interfaces/Currency";
 import { CONSTANTS } from "../constants";
 
 export const getCurrenciesAsync = createAsyncAction(
