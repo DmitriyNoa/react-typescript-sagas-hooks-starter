@@ -4,8 +4,6 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install
-      - echo running tests
-      - npm test
   build:
     commands:
       - echo Build started on `date`
