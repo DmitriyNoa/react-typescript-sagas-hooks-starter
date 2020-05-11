@@ -39,4 +39,5 @@ A currency exchange application. The application simulates transactions between 
 - Add more unit tests.
 - For the better scalability - move to feature/module based file structure: e.g. all actions, reducers, components related to a certain functionality should be under one folder or module. 
 - Split the exchange component to smaller, atomic components.
+- Create a CSS theme, move all CSS colors, font sizes, etc. to a theme for reuse across the app to avoid duplications.
 - Add TSDOC comments.
