@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { Pocket } from "./pocket";
-import {IPocket} from "../../../lib/interfaces/Pocket";
-import {ICurrency} from "../../../lib/interfaces/Currency";
+import { IPocket } from "../../../lib/interfaces/Pocket";
+import { ICurrency } from "../../../lib/interfaces/Currency";
 
 describe("Pocket", ()=> {
     it('should render a pocket', () => {

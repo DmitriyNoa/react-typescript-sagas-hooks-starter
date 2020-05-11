@@ -13,6 +13,6 @@ phases:
 artifacts:
   files:
     - build/**/*
-    - staticServer.js
+    - static-server.js
     - node_modules/**/*
     - package.json
