@@ -5,6 +5,7 @@ interface ExchangeCss {
     userPockets?: string;
     currenciesExchange?: string;
     exchangeForm?: string;
+    rate?: string;
 }
 
 export const exchangeStyles: ExchangeCss = {
@@ -24,5 +25,8 @@ export const exchangeStyles: ExchangeCss = {
     }),
     exchangeForm: css({
         marginBottom: "2rem"
+    }),
+    rate: css({
+        color: "#cc0000"
     }),
 };

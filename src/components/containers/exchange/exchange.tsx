@@ -89,10 +89,10 @@ export const Exchange: React.FC = () => {
             </div>
             <div className={cx(exchangeStyles.currenciesExchange)}>
                 <h2>Exchange
-                    <span>
+                    <span className={cx(exchangeStyles.rate)}>
                         {exchange.fromPocket &&
                          exchange.toPocket &&
-                        `1 ${exchange.fromPocket?.currency.code} = ${displayBalance(exchangeCurrency.rates[exchange.toPocket?.currency.code])} ${exchange.toPocket?.currency.code}`}
+                        ` 1 ${exchange.fromPocket?.currency.code} = ${displayBalance(exchangeCurrency.rates[exchange.toPocket?.currency.code])} ${exchange.toPocket?.currency.code}`}
                     </span>
                 </h2>
                 <div>
@@ -130,16 +130,15 @@ export const Exchange: React.FC = () => {
                                     })
                         }}/>
                         <Input disabled={true}
-                               onChange={(val) => {
-
-                               }}
+                               onChange={(val) => {}}
                                value={changeResultValue}/>
                     </div>
                     <div>
                         <Button text={"exchange"}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    dispatch(TransactionAction(undefined, transaction))
+                                    dispatch(TransactionAction(undefined, transaction));
+                                    setChangeValue("0");
                                  }}/>
                     </div>
                 </div>
