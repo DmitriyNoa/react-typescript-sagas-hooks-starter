@@ -1,5 +1,5 @@
-import { ExchangeRate } from "../lib/interfaces/Currency";
-import { GetExchangeRate, GetExchangeRateType } from "../actions/exchange";
+import { ExchangeRate } from "../../lib/interfaces/Currency";
+import { GetExchangeRate, GetExchangeRateType } from "../../actions/exchange";
 import { getType } from "typesafe-actions";
 
 export const initialExchangeState: ExchangeRate = {
@@ -10,7 +10,7 @@ export const initialExchangeState: ExchangeRate = {
     rates: {},
 }
 
-export const exchangeReducer = (state: ExchangeRate = initialExchangeState, action: GetExchangeRateType) => {
+export const exchange = (state: ExchangeRate = initialExchangeState, action: GetExchangeRateType) => {
     switch (action.type) {
         case getType(GetExchangeRate): {
             return action.payload

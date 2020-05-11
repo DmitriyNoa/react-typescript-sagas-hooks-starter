@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { pocketsReducer } from "./pockets.reducer";
+import { pockets } from "./pockets/pockets";
 import { IPocket } from "../lib/interfaces/Pocket";
 import { ExchangeRate, ICurrency } from "../lib/interfaces/Currency";
-import { currenciesReducer } from "./currencies.reducer";
-import { exchangeReducer } from "./exchange.reducer";
+import { currencies } from "./currencies/currencies";
+import { exchange } from "./exchange/exchange";
 
 export interface IAppState {
     pockets: IPocket[];
@@ -12,7 +12,7 @@ export interface IAppState {
 }
 
 export const rootReducers = combineReducers<IAppState>({
-    pockets: pocketsReducer,
-    currencies: currenciesReducer,
-    exchange: exchangeReducer,
+    pockets: pockets,
+    currencies: currencies,
+    exchange: exchange,
 });

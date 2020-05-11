@@ -1,13 +1,13 @@
-import { IPocket } from "../lib/interfaces/Pocket";
-import { ADD_POCKET, AddPocket } from "../actions/pockets";
+import { IPocket } from "../../lib/interfaces/Pocket";
+import { ADD_POCKET, AddPocket } from "../../actions/pockets";
 import { getType } from "typesafe-actions";
-import { TransactionAction, TransactionType } from "../actions/exchange";
-import { Transaction } from "../lib/interfaces/Transaction";
+import { TransactionAction, TransactionType } from "../../actions/exchange";
+import { Transaction } from "../../lib/interfaces/Transaction";
 
 // initialize default pockets as per requirements: EUR, GBP, USD
 const pocketsInitialState: IPocket[] = [];
 
-export const pocketsReducer = (state: IPocket[] = pocketsInitialState, action: AddPocket | TransactionType) => {
+export const pockets = (state: IPocket[] = pocketsInitialState, action: AddPocket | TransactionType) => {
     switch (action.type) {
         case getType(ADD_POCKET): {
             if(!action.payload) return state;
