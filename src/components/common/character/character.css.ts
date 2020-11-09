@@ -1,11 +1,11 @@
 import { css } from "emotion";
-interface PocketCss {
+interface CharacterCss {
     root?: string;
     pocketName?: string;
     pocketBalance?: string;
 }
 
-export const pocketStyles: PocketCss = {
+export const pocketStyles: CharacterCss = {
     root: css({
         padding: "2rem",
         alignItems: "center",

@@ -1,4 +1,4 @@
-import { GET_CURRENCIES_SUCCESS_TYPE, getCharactersAsync} from "../../actions/currencies";
+import { GET_CURRENCIES_SUCCESS_TYPE, getCharactersAsync} from "../../actions/characters";
 import { getType } from "typesafe-actions";
 import {ICharacter} from "../../sagas/currencies";
 

@@ -1,5 +1,5 @@
 import { config } from "../../config";
-import {HttpResponse} from "../interfaces/Common";
+import {HttpResponse} from "../interfaces/common";
 
 const apiBaseURL = config.API_URL;
 

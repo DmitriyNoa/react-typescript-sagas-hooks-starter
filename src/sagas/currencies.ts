@@ -1,8 +1,8 @@
 import { get } from "../lib/utils/http-client";
 import { CONSTANTS } from "../constants";
 import { put } from 'redux-saga/effects';
-import {getCharactersAsync} from "../actions/currencies";
-import {HttpResponse} from "../lib/interfaces/Common";
+import {getCharactersAsync} from "../actions/characters";
+import {HttpResponse} from "../lib/interfaces/common";
 
 export interface Origin {
     name: string;

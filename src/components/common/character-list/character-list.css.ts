@@ -1,9 +1,9 @@
 import { css } from "emotion";
-interface PocketsListCss {
+interface CharacterListCss {
     root?: string;
 }
 
-export const pocketsListStyles: PocketsListCss = {
+export const pocketsListStyles: CharacterListCss = {
     root: css({
         padding: 0,
         margin: 0,
