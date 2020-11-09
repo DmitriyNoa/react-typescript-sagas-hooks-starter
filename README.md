@@ -1,6 +1,5 @@
-# Currency exchange
-![intro](./docs/assets/preview.png)
-A currency exchange application. The application simulates transactions between bank accounts in different characters with real-time exchange rates from the openexchangerates.org API.
+# React Typescript Sagas Hooks Starter CSS-in-JS starter project
+A minimalistic starter project for Typescript React WEB client applications.
 
 ## Requirements
 - NodeJS
@@ -18,13 +17,12 @@ A currency exchange application. The application simulates transactions between 
 
 ## Installation
 - Clone the project from the GitHub.
-  ```git clone git@github.com:DmitriyNoa/currency-exchange.git```   
+  ```git clone git@github.com:DmitriyNoa/react-typescript-sagas-hooks-starter.git```   
 - Go to project directory.
-  ```cd currency-exchange```
+  ```cd react-typescript-sagas-hooks-starter.```
 - Install the dependencies.
   ```yarn install```
 - Rename .env_example to .env.
-- Register on openexchangerates and add an API key to the .env in REACT_APP_API_KEY variable.
 
 ## Running
 ```yarn serve```
@@ -35,9 +33,3 @@ A currency exchange application. The application simulates transactions between 
 ## Production run
 ```yarn start```
 
-## Notes and TODOs
-- Add more unit tests.
-- For the better scalability - move to feature/module based file structure: e.g. all actions, reducers, components related to a certain functionality should be under one folder or module. 
-- Split the exchange component to smaller, atomic components.
-- Create a CSS theme, move all CSS colors, font sizes, etc. to a theme for reuse across the app to avoid duplications.
-- Add TSDOC comments.
