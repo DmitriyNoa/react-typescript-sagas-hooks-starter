@@ -1,7 +1,10 @@
 {
   "name": "currency-exchange",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "repository": {
+    "url": "https://github.com/DmitriyNoa/react-typescript-sagas-hooks-starter.git"
+  },
   "dependencies": {
     "emotion": "^10.0.27",
     "express": "^4.17.1",
@@ -58,6 +61,7 @@
     "@types/uuid": "^7.0.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "react-router-dom": "^5.2.0",
     "react-test-renderer": "^16.13.1"
   }
 }
