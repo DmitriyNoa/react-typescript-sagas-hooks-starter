@@ -1,8 +1,9 @@
 import { config } from "../../config";
+import {HttpResponse} from "../interfaces/Common";
 
 const apiBaseURL = config.API_URL;
 
-const get = async <T>(url: string): Promise<T> => {
+const get = async <T>(url: string): Promise<HttpResponse<T>> => {
     const finalURL = apiBaseURL + url;
 
     try {

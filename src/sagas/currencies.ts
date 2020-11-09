@@ -1,55 +1,45 @@
 import { get } from "../lib/utils/http-client";
-import {CurrencyResponse, ExchangeRate, ICurrency } from "../lib/interfaces/Currency";
 import { CONSTANTS } from "../constants";
-import { put, call, take, race, delay } from 'redux-saga/effects';
-import {END_POLL_WATCHER, getCurrenciesAsync, START_POLL_WATCHER} from "../actions/currencies";
-import { config } from "../config";
-import { GetExchangeRate } from "../actions/exchange";
+import { put } from 'redux-saga/effects';
+import {getCharactersAsync} from "../actions/currencies";
+import {HttpResponse} from "../lib/interfaces/Common";
 
-function* getCurrenciesList(): Generator<any, ICurrency[] | undefined, CurrencyResponse> {
+export interface Origin {
+    name: string;
+    url: string;
+}
+
+export interface Location {
+    name: string;
+    url: string;
+}
+
+export interface ICharacter {
+    id: number;
+    name: string;
+    status: string;
+    species: string;
+    type: string;
+    gender: string;
+    origin: Origin;
+    location: Location;
+    image: string;
+    episode: string[];
+    url: string;
+    created: Date;
+}
+
+function* getCurrenciesList(): Generator<any, ICharacter[] | undefined, HttpResponse<ICharacter>> {
     try {
-        const currencies = yield get<CurrencyResponse>(CONSTANTS.URLS.CURRENCIES);
-
-        const currenciesArray: ICurrency[] = [];
-
-        for(let currencyCode in currencies) {
-            const currency: ICurrency = {
-                code: currencyCode,
-                displayName: currencies[currencyCode]
-            }
-            currenciesArray.push(currency);
-        }
-
-        yield put(getCurrenciesAsync.success(currenciesArray));
-        return currenciesArray;
+        const characters = yield get<ICharacter[]>(CONSTANTS.URLS.CHARACTERS);
+        yield put(getCharactersAsync.success(characters.results));
+        return [];
     } catch (err) {
         console.error(err);
     }
 }
 
-function* currencyRatePolling(payload: string):  Generator<any, string | number, ExchangeRate> {
-    const pollingDelay = config.POLLING_INTERVAL;
-    const baseCurrency = payload;
-    while (true) {
-        try {
-            const exchange = yield get<ExchangeRate>(`${CONSTANTS.URLS.EXCHANGE}?base=${baseCurrency}&app_id=${config.API_KEY}`);
-            yield put(GetExchangeRate(exchange));
-            yield delay(pollingDelay);
-        } catch (err) {
-            console.error(err);
-            yield call(END_POLL_WATCHER);
-        }
-    }
-}
 
-
-function* watchPolling() {
-    while (true) {
-        const action = yield take(START_POLL_WATCHER);
-        yield race( [call(currencyRatePolling, action.payload), take(END_POLL_WATCHER)] )
-    }
-}
 export {
     getCurrenciesList,
-    watchPolling,
 }

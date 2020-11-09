@@ -24,7 +24,7 @@ export const CONSTANTS = {
         }
     },
     URLS: {
-        CURRENCIES: "currencies.json",
+        CHARACTERS: "/character",
         EXCHANGE: "latest.json",
     }
 };

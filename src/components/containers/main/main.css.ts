@@ -1,5 +1,5 @@
 import { css } from "emotion";
-interface ExchangeCss {
+interface MainCss {
     root?: string;
     h2?: string;
     userPockets?: string;
@@ -8,7 +8,7 @@ interface ExchangeCss {
     rate?: string;
 }
 
-export const exchangeStyles: ExchangeCss = {
+export const exchangeStyles: MainCss = {
     root: css({
         padding: "2rem",
         display: "flex",

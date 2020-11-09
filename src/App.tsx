@@ -1,13 +1,13 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { Exchange } from "./components/containers/exchange/exchange"
+import { Main } from "./components/containers/main/main"
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
-          <Exchange />
+          <Main />
       </Provider>
     </div>
   );

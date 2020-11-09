@@ -1,6 +1,6 @@
 # Currency exchange
 ![intro](./docs/assets/preview.png)
-A currency exchange application. The application simulates transactions between bank accounts in different currencies with real-time exchange rates from the openexchangerates.org API.
+A currency exchange application. The application simulates transactions between bank accounts in different characters with real-time exchange rates from the openexchangerates.org API.
 
 ## Requirements
 - NodeJS
